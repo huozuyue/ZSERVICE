@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.hzy.zservice.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="left|center_vertical">
+
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/sb_text"
+            style="@style/SwitchButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/custom_text_state_color"
+            android:textSize="16dp"
+             app:kswThumbColor="@color/colorAccent1"
+            app:kswBackColor="@color/custom_back_color"
+            app:kswTextAdjust="-2dp"
+            app:kswTextExtra="8dp"
+            app:kswTextOff="不听单"
+            app:kswTextOn="听单" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="听单已关闭，无法接收订单"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="left|center_vertical">
+    <Button
+        android:id="@+id/abutton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/daiqiangdedingdan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="10dp"
+        android:gravity="left|center_vertical"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+
+</LinearLayout>

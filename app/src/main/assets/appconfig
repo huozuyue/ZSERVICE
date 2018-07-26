@@ -1,0 +1,4 @@
+serverUrl=http://192.168.1.5:8080/arest/services/test/
+bserverUrl=http://192.168.43.121:8080/arest/services/test/
+dserverUrl=http://106.14.118.55:18066/xmzs/services/test/
+cserverUrl=http://106.14.118.55:18066/arest/services/test/

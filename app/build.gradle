@@ -1,0 +1,78 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        key0config {
+            keyAlias 'key0'
+            keyPassword 'asdfgh'
+            storeFile file('D:/androidres/appsigner/appsignerfile.jks')
+            storePassword 'asdfgh'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/jersey-module-version'
+    }
+    compileSdkVersion 26
+    defaultConfig {
+        //检查了下defaultConfig 发现没有配置SO库
+        ndk { //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "arm64-v8a", "x86_64"
+        }
+        applicationId "com.hzy.zservice"
+        minSdkVersion 18
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.key0config
+        }
+        debug {
+            signingConfig signingConfigs.key0config
+        }
+    }
+    configurations.all {
+        resolutionStrategy.force 'com.android.support:support-annotations:26.1.0'
+    }
+
+}
+
+dependencies {
+    //检查了下这个 implementation fileTree(include: ['*.jar'], dir: 'libs') 发现没问题
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //3D地图so及jar
+    //检查了com.amap.api:3dmap:latest.integration
+    // 发现没有问题 就是下面这行
+    implementation 'com.amap.api:3dmap:latest.integration'
+    //定位功能
+    //com.amap.api:location:latest.integration 这个也检查了  也没问题
+    implementation 'com.amap.api:location:latest.integration'
+    //搜索功能
+    //com.amap.api:search:latest.integration 这个配置的也对 全部修改完了之后别忘了点击右上角的按钮 sync now
+    implementation 'com.amap.api:search:latest.integration'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.kyleduo.switchbutton:library:2.0.0'
+    testImplementation 'junit:junit:4.12'
+    //日志处理
+    implementation 'com.orhanobut:logger:2.2.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.google.code.gson:gson:2.8.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestCompile 'com.android.support:support-annotations:26.1.0'
+    implementation files('libs/jerseylib/jersey-client-1.19.1.jar')
+    implementation files('libs/jerseylib/jsr311-api-1.1.1.jar')
+    implementation files('libs/jerseylib/jersey-core-1.19.1.jar')
+}

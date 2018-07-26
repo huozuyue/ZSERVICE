@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hzy.zservice">
+    //地图包、搜索包需要的基础权限
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    //定位包、导航包需要的额外权限（注：基础权限也需要）
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
+    <!-- 模拟位置权限<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" /> -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="1a70270db5b02be43a6a760465351ef8">
+            //开发者申请的key MainActivity
+        </meta-data>
+
+        <service android:name="com.amap.api.location.APSService" />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.hzy.serviceActivity.MyIntentService"
+            android:exported="false" />
+        <service
+            android:name="com.hzy.serviceActivity.MyService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.hzy.serviceActivity.LocationService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".LoginActivity"
+            android:label="登陆页面"
+            android:screenOrientation="portrait" />
+        <!--
+            <activity
+            android:name=".LoginActivity"
+            android:label="登陆页面"
+            android:screenOrientation="portrait" />
+        -->
+
+        <activity
+            android:name=".geiqingqingyanshiyongde"
+            android:label="@string/title_activity_geiqingqingyanshiyongde"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".testService" />
+
+        <service
+            android:name="com.hzy.serviceActivity.MyServicea"
+            android:enabled="true"
+            android:exported="true"></service>
+    </application>
+
+</manifest>
